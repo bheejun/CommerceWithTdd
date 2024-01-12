@@ -1,3 +1,11 @@
 package com.example.commercewithtdd.domain.order.dto
 
-data class OrderRequest()
+import com.example.commercewithtdd.domain.user.model.User
+
+data class OrderRequest(
+    var userId : Long,
+    var productIdList : MutableList<Long>,
+
+
+
+)

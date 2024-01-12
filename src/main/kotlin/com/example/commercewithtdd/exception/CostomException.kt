@@ -1,4 +1,4 @@
-package com.example.coffee.exception
+package com.example.commercewithtdd.exception
 
 class UsernameAlreadyExistsException(message: String) : RuntimeException(message)
 class UserNotFoundException(message: String) : RuntimeException(message)

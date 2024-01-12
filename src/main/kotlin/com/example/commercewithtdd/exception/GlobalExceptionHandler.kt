@@ -1,6 +1,5 @@
-package com.example.coffee.exception
+package com.example.commercewithtdd.exception
 
-import com.example.coffee.exception.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice

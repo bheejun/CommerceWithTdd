@@ -1,4 +1,4 @@
-package com.example.coffee.util
+package com.example.commercewithtdd.util
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -20,7 +20,7 @@ class SecurityConfig(private val jwtUtil: JwtUtil) {
 
             .csrf { it.disable() }
             .authorizeHttpRequests {
-                it.requestMatchers("/user/**","/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                it.requestMatchers("/user/**","/swagger-ui/**", "/v3/api-docs/**", "/seller/**").permitAll()
                     .anyRequest().authenticated()
             }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }

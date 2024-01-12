@@ -1,4 +1,4 @@
-package com.example.coffee.exception
+package com.example.commercewithtdd.exception
 
 data class ErrorResponse(
     val message: String,

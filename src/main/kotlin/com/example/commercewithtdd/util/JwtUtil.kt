@@ -1,19 +1,12 @@
-package com.example.coffee.util
+package com.example.commercewithtdd.util
 
-import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.PropertySource
-import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
-import java.sql.Timestamp
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.temporal.ChronoUnit
 import java.util.*
-import javax.crypto.spec.SecretKeySpec
 
 @Service
 @PropertySource("classpath:application.properties")

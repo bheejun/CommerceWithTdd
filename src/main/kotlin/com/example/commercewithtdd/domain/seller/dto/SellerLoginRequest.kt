@@ -1,4 +1,6 @@
 package com.example.commercewithtdd.domain.seller.dto
 
-class SellerLoginRequest {
-}
+data class SellerLoginRequest(
+    val sellerName: String,
+    val password : String
+    )

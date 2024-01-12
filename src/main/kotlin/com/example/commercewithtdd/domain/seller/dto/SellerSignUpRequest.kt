@@ -3,7 +3,7 @@ package com.example.commercewithtdd.domain.seller.dto
 import jakarta.validation.constraints.Pattern
 import jakarta.validation.constraints.Size
 
-data class SellerRequest(
+data class SellerSignUpRequest(
     @Pattern(regexp = "^[a-z0-9]{4,10}$", message = "Invalid username" )
     val sellerName : String,
 
