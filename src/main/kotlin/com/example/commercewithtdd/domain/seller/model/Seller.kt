@@ -1,5 +1,6 @@
 package com.example.commercewithtdd.domain.seller.model
 
+import com.example.commercewithtdd.domain.order.model.Order
 import com.example.commercewithtdd.domain.product.model.Product
 import jakarta.persistence.*
 
@@ -23,6 +24,10 @@ data class Seller(
     var storeInfo : String,
 
     @OneToMany(mappedBy = "seller", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val productList : MutableList<Product> = mutableListOf()
+    val productList : MutableList<Product> = mutableListOf(),
 
-)
+    @OneToMany(mappedBy = "seller", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val orderList : MutableList<Order> = mutableListOf(),
+
+
+    )

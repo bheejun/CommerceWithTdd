@@ -43,13 +43,12 @@ class GlobalExceptionHandler {
         return ResponseEntity(error, HttpStatus.BAD_REQUEST)
     }
 
-    @ExceptionHandler(value = [CommentNotFoundException::class, PostNotFoundException::class])
-    fun handleResourceNotFoundException(e: RuntimeException): ResponseEntity<ErrorResponse> {
-        val status = if (e is CommentNotFoundException) HttpStatus.NOT_FOUND else HttpStatus.NOT_FOUND
+    @ExceptionHandler(value = [ProductNotFoundException::class])
+    fun handelProductNotFoundException(e: ProductNotFoundException) : ResponseEntity<ErrorResponse> {
         val error = ErrorResponse(
-            message = e.message ?: "Resource not found",
-            status = status.value()
+                message = e.message ?: "Product not found",
+                status = HttpStatus.BAD_REQUEST.value()
         )
-        return ResponseEntity(error, status)
+        return ResponseEntity(error, HttpStatus.BAD_REQUEST)
     }
 }

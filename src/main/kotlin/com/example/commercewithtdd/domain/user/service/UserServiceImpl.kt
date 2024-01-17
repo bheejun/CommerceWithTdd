@@ -1,5 +1,6 @@
 package com.example.commercewithtdd.domain.user.service
 
+import com.example.commercewithtdd.domain.seller.repository.SellerRepository
 import com.example.commercewithtdd.domain.user.dto.LoginRequest
 import com.example.commercewithtdd.domain.user.dto.SignUpRequest
 import com.example.commercewithtdd.domain.user.model.User
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service
 @Service
 class UserServiceImpl(
     private val userRepository: UserRepository,
+    private val sellerRepository: SellerRepository,
     private val jwtUtil: JwtUtil,
     private val passwordEncoder: BCryptPasswordEncoder,
     private val response: HttpServletResponse
@@ -24,7 +26,7 @@ class UserServiceImpl(
     @Transactional
     override fun signUp(signUpRequest: SignUpRequest): String {
         val username = signUpRequest.username
-        if (userRepository.existsByUsername(username)) {
+        if (userRepository.existsByUsername(username) or sellerRepository.existsByUsername(username)) {
             throw UsernameAlreadyExistsException("Username is already exist")
         }
 

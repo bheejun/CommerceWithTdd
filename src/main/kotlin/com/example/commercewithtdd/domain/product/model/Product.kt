@@ -26,7 +26,7 @@ data class Product(
     val price: Double,
 
     @Column(nullable = false)
-    val quantity: Int,
+    var quantity: Int,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")

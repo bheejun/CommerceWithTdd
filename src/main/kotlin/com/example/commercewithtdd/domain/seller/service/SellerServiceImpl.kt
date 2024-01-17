@@ -5,6 +5,7 @@ import com.example.commercewithtdd.domain.seller.dto.SellerSignUpRequest
 import com.example.commercewithtdd.domain.seller.dto.UpdateInfoRequest
 import com.example.commercewithtdd.domain.seller.model.Seller
 import com.example.commercewithtdd.domain.seller.repository.SellerRepository
+import com.example.commercewithtdd.domain.user.repository.UserRepository
 import com.example.commercewithtdd.exception.InvalidPasswordException
 import com.example.commercewithtdd.exception.UserNotFoundException
 import com.example.commercewithtdd.exception.UsernameAlreadyExistsException
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service
 @Service
 class SellerServiceImpl(
     private val sellerRepository: SellerRepository,
+    private val userRepository : UserRepository,
     private val jwtUtil: JwtUtil,
     private val passwordEncoder: BCryptPasswordEncoder,
     private val response: HttpServletResponse
@@ -24,7 +26,7 @@ class SellerServiceImpl(
     @Transactional
     override fun sellerSignUp(sellerSignUpRequest: SellerSignUpRequest): String {
         val sellerName = sellerSignUpRequest.sellerName
-        if (sellerRepository.existsByUsername(sellerName)) {
+        if (sellerRepository.existsByUsername(sellerName) or userRepository.existsByUsername(sellerName)) {
             throw UsernameAlreadyExistsException("SellerName is already exist")
         }
 
@@ -34,7 +36,6 @@ class SellerServiceImpl(
                 password =  passwordEncoder.encode(sellerSignUpRequest.password),
                 bankAccount = sellerSignUpRequest.bankAccount,
                 storeInfo = sellerSignUpRequest.storeDetail
-
             )
         )
 
